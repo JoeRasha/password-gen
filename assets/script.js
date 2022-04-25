@@ -16,7 +16,7 @@ function generatePassword() {
   // prompt user for password length
   let userLength = prompt("Enter a password length between 8 and 128.");
   
-  // If not a number between 8 and 128, alert user
+  // If not a number between 8 to 128, alert user
   // This works to return the user to the main page, so they have to click Generate Password again.
   if (userLength < 8 || userLength > 128 || isNaN(userLength)) {
     alert("Please enter a valid selection for password length. Click Generate Password to try again.");
@@ -67,3 +67,27 @@ function generatePassword() {
   for (let i = 0; i < userLength; i++) {
     userPassword += pwString.charAt(Math.floor(Math.random() * pwString.length));
   }
+
+  // console.log(userPassword);
+  // userPWPrompt = alert("Your password is " + userPassword);
+  return userPassword;
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+// Adding copy password button from w3schools: https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+function copyPassword() {
+  /* Get the text field */
+  var copyText = document.getElementById("password");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the password: " + copyText.value);
+}
